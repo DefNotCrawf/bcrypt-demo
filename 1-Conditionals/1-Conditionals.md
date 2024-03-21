@@ -15,7 +15,7 @@
 10. match case (switch case)
 
 ## Notes
-1. [Conditionals](#Cconditionals)
+1. [Conditionals](#Conditionals)
 2. [if Statements](#if-statements)
 3. [Control Flow, elif, and else](#control-flow-elif-and-else)
 4. [or](#or)
