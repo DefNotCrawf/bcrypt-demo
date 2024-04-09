@@ -8,7 +8,7 @@ This is the source respository for your first practical programming task.
 
 ## Before the task begins
 1. Open a new Lucid chart or Visio document for your models in a new tab in your browser
-2. Fork this repository as instructed
+2. Fork this repository as a private repository
 3. Ensure all your work is saved into the folder 'my_work', only work in this folder will be marked.
 
 ## Task Specifications
@@ -40,7 +40,7 @@ All allowed extensions, pip installs & libraries have already been included or u
 **Students who install additonal extensions, pip installs or libraries will be instantly awarded a zero mark.**
 
 ## Files
-- [source.txt](my_work/source.txt) is to be used by your application
+- [source.csv](my_work/source.csv) is to be used by your application
 - [plain_text.txt](my_work/plain_text.txt) is to help you with testing or can be used if you don't want to use plain text passwords.
 - [README.md](README.md) contains core information
 - Notes files contain the notes from the CS50 course:
@@ -58,18 +58,18 @@ str = '...' literals = a sequence of characters. A “character” is a basic un
 
 **Example of a string:**
 ```
-my_string = "This string will be stored as a string"
+my_string = "This string, will be stored as a string"
 ```
 
 bytes = b'...' literals = a sequence of bytes. A “byte” is the smallest integer type addressable on a computer, which is nearly universally an octet, or 8-bit unit, thus allowing numbers between 0 and 255.
 
 **Example of a byte string:**
 ```
-my_byte_string = b"This string will be stored as a sequence of bytes"
+my_byte_string = b"This is a byte string, it will be stored as a sequence of bytes"
 ```
 
-## How To Hash Passwords In Python
-A strong password provides safety. Plain text passwords are extremely insecure, so we need to strengthen the passwords by hashing the password. Hashing passwords is a cheap and secure method that keeps the passwords safe from malicious activity. Password hashing generates a unique password for every text, even if the plaintext password is the same.
+## Hashing Passwords
+A strong password provides safety. Plain text passwords are extremely insecure, so we need to strengthen the passwords by hashing the password. Hashing passwords is a cheap and secure method that keeps the passwords safe from malicious activity. A password hashing algorithm generates a unique password for every password, even if the plaintext password is the same.
 Why do we need to Hash a Password?
 Hashing is used mainly to protect a password from hackers. Suppose, if a website is hacked, cybercriminals don’t get access to your password. Instead, they just get access to the encrypted “hash” created by the method of hashing.
 

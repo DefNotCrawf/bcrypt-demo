@@ -26,6 +26,7 @@
 				"ms-python.vscode-pylance",
 				"ms-vscode-remote.remote-containers",
 				"GitHub.codespaces",
+				"mechatroner.rainbow-csv",
 				"McCarter.start-git-bash"
 			]
 		}
