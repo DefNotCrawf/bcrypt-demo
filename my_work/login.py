@@ -36,9 +36,9 @@ def first_register():
     return userName, userPass
 
 
-def name_and_pass_to_txt():
+def name_and_pass_to_csv():
     user_name, user_pass = first_register()
-    with open(r"plain_text.txt", "a") as file:
+    with open(r"plain_text.csv", "a") as file:
         file.write(f"\n{user_name},{user_pass}")
 
 
@@ -49,7 +49,7 @@ def login(i):
     while i < 2:
         intput_username = input("Please enter your username: ")
         intput_password = input("Please enter your password: ")
-        with open(r"plain_text.txt", "r") as file:
+        with open(r"plain_text.csv", "r") as file:
             for line in file:
                 username, password = line.strip().split(",")
                 if username == intput_username and password == intput_password:
@@ -63,7 +63,7 @@ def login(i):
         while i < 3:
             intput_username = input("Please enter your username: ")
             intput_password = input("Please enter your password: ")
-            with open(r"plain_text.txt", "r") as file:
+            with open(r"plain_text.csv", "r") as file:
                 for line in file:
                     username, password = line.strip().split(",")
                     if username == intput_username and password == intput_password:
@@ -94,16 +94,16 @@ def menu_signed_in(user):
 
 def change_password(user):
     new_pass = input("Please enter a new password: ")
-    with open(r"plain_text.txt", "r") as file:
+    with open(r"plain_text.csv", "r") as file:
         for line in file:
             username, password = line.strip().split(",")
             if username == user:
-                with open(r"plain_text.txt", "r") as file:
+                with open(r"plain_text.csv", "r") as file:
                     lines = file.readlines()
-                with open(r"plain_text.txt", "w") as file:
+                with open(r"plain_text.csv", "w") as file:
                     for line in lines:
                         if line.strip() == f"{username},{password}":
-                            file.write(f"{username},{new_pass}\n")
+                            file.write(f"\n{username},{new_pass}")
                         else:
                             file.write(line)
 
@@ -115,7 +115,7 @@ def menu_not_signed_in(i):
         if choice in ["1", "2", "3"]:
             match choice:
                 case "1":
-                    name_and_pass_to_txt()
+                    name_and_pass_to_csv()
                     menu_not_signed_in(i)
                 case "2":
                     result_bool, username = login(i)
@@ -130,4 +130,10 @@ def menu_not_signed_in(i):
             print("Invalid option. Please try again.")
 
 
-menu_not_signed_in(i)
+# menu_not_signed_in(i)
+
+pas = "I Am All The Jedi"
+
+pas = bytes(pas, "utf-8")
+
+print(pas)
