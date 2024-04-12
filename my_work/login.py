@@ -130,10 +130,4 @@ def menu_not_signed_in(i):
             print("Invalid option. Please try again.")
 
 
-# menu_not_signed_in(i)
-
-pas = "I Am All The Jedi"
-
-pas = bytes(pas, "utf-8")
-
-print(pas)
+menu_not_signed_in(i)
