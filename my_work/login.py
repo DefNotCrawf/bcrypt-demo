@@ -45,19 +45,20 @@ def name_and_pass_to_txt():
 
 def menu_not_signed_in():
     print("1. Register", "2. Login", "3. Exit", sep="\n")
-    choice = input("Please select an option: ")
-    if choice in ["1", "2", "3"]:
-        print("options sel")
-        match choice:
-            case "1":
-                name_and_pass_to_txt()
-            case "2":
-                print("login")
-            case "3":
-                print("exit")
-                exit()
-    else:
-        print("Invalid option. Please try again.")
+    while True:
+        choice = input("Please select an option: ")
+        if choice in ["1", "2", "3"]:
+            print("options sel")
+            match choice:
+                case "1":
+                    name_and_pass_to_txt()
+                case "2":
+                    print("login")
+                case "3":
+                    print("exit")
+                    exit()
+        else:
+            print("Invalid option. Please try again.")
 
 
 menu_not_signed_in()
