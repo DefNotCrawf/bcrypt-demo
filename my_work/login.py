@@ -79,10 +79,36 @@ def menu_signed_in(user):
     print(f"Hello {user}!")
     while True:
         print("1. Change Password", "2. Logout", sep="\n")
+        choice = input("Please select an option: ")
+        if choice in ["1", "2"]:
+            match choice:
+                case "1":
+                    change_password(user)
+                case "2":
+                    print("Logout successful.")
+                    break
+        else:
+            print("Invalid option. Please try again.")
+            continue
+
+
+def change_password(user):
+    new_pass = input("Please enter a new password: ")
+    with open(r"plain_text.txt", "r") as file:
+        for line in file:
+            username, password = line.strip().split(",")
+            if username == user:
+                with open(r"plain_text.txt", "r") as file:
+                    lines = file.readlines()
+                with open(r"plain_text.txt", "w") as file:
+                    for line in lines:
+                        if line.strip() == f"{username},{password}":
+                            file.write(f"{username},{new_pass}\n")
+                        else:
+                            file.write(line)
 
 
 def menu_not_signed_in(i):
-
     while True:
         print("1. Register", "2. Login", "3. Exit", sep="\n")
         choice = input("Please select an option: ")
