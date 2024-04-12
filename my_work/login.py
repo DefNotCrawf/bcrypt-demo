@@ -9,7 +9,6 @@ def is_string_blank(s):
 def first_register_username():
     while True:
         print("Hello user.")
-        print("You have not registered.")
         uName = input("Please enter a username: ")
         if is_string_blank(uName):
             # print("success")
@@ -43,6 +42,9 @@ def name_and_pass_to_txt():
         file.write(f"\n{user_name},{user_pass}")
 
 
+i = 0
+
+
 def login(i):
     while i < 2:
         intput_username = input("Please enter your username: ")
@@ -52,7 +54,7 @@ def login(i):
                 username, password = line.strip().split(",")
                 if username == intput_username and password == intput_password:
                     print("Login successful.")
-                    return username
+                    return True, username
             else:
                 i += 1
                 print("Login failed. Please try again.")
@@ -66,19 +68,23 @@ def login(i):
                     username, password = line.strip().split(",")
                     if username == intput_username and password == intput_password:
                         print("Login successful.")
-                        return username
+                        return True, username
                 else:
                     i += 1
                     print("Login failed.")
-                    return False
+                    return False, None
 
 
-i = 0
+def menu_signed_in(user):
+    print(f"Hello {user}!")
+    while True:
+        print("1. Change Password", "2. Logout", sep="\n")
 
 
 def menu_not_signed_in(i):
-    print("1. Register", "2. Login", "3. Exit", sep="\n")
+
     while True:
+        print("1. Register", "2. Login", "3. Exit", sep="\n")
         choice = input("Please select an option: ")
         if choice in ["1", "2", "3"]:
             match choice:
@@ -86,10 +92,10 @@ def menu_not_signed_in(i):
                     name_and_pass_to_txt()
                     menu_not_signed_in(i)
                 case "2":
-                    if login(i):
-                        break
+                    result_bool, username = login(i)
+                    if result_bool:
+                        menu_signed_in(username)
                     else:
-                        print("You have reached the maximum number of attempts.")
                         exit()
                 case "3":
                     print("exit")
