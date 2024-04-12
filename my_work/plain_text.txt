@@ -7,3 +7,7 @@ MyRey,I Am All The Jedi
 Luke,May the Force be with you
 DefNotCrawf,wowexcellentpassword
 DefNotCrawf,anotherexcellentpassword
+defnotcrawf,password
+crawf,pass
+c,123
+awd,awd

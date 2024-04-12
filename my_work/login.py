@@ -43,17 +43,54 @@ def name_and_pass_to_txt():
         file.write(f"\n{user_name},{user_pass}")
 
 
-def menu_not_signed_in():
+def login(i):
+    while i < 2:
+        intput_username = input("Please enter your username: ")
+        intput_password = input("Please enter your password: ")
+        with open(r"plain_text.txt", "r") as file:
+            for line in file:
+                username, password = line.strip().split(",")
+                if username == intput_username and password == intput_password:
+                    print("Login successful.")
+                    return username
+            else:
+                i += 1
+                print("Login failed. Please try again.")
+                continue
+    else:
+        while i < 3:
+            intput_username = input("Please enter your username: ")
+            intput_password = input("Please enter your password: ")
+            with open(r"plain_text.txt", "r") as file:
+                for line in file:
+                    username, password = line.strip().split(",")
+                    if username == intput_username and password == intput_password:
+                        print("Login successful.")
+                        return username
+                else:
+                    i += 1
+                    print("Login failed.")
+                    return False
+
+
+i = 0
+
+
+def menu_not_signed_in(i):
     print("1. Register", "2. Login", "3. Exit", sep="\n")
     while True:
         choice = input("Please select an option: ")
         if choice in ["1", "2", "3"]:
-            print("options sel")
             match choice:
                 case "1":
                     name_and_pass_to_txt()
+                    menu_not_signed_in(i)
                 case "2":
-                    print("login")
+                    if login(i):
+                        break
+                    else:
+                        print("You have reached the maximum number of attempts.")
+                        exit()
                 case "3":
                     print("exit")
                     exit()
@@ -61,4 +98,4 @@ def menu_not_signed_in():
             print("Invalid option. Please try again.")
 
 
-menu_not_signed_in()
+menu_not_signed_in(i)
