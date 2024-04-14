@@ -9,22 +9,29 @@ def is_string_blank(s):
 
 
 def first_register_username():
+	print("Hello user.")
 	while True:
-		print("Hello user.")
 		uName = input("Please enter a username: ")
 		if is_string_blank(uName):
-			# print("success")
-			return uName
+			# Check if username already exists
+			with open(r"plain_text.csv", "r") as file:
+				for line in file:
+					username, _ = line.strip().split(",")
+					if username == uName:
+						print("Username already exists. Please try again.")
+						break
+				else:
+					# If the loop didn't break, username doesn't exist
+					return uName
 		else:
 			print("Invalid username. Please try again.")
-			continue
 
 
 def first_register_password(name):
 	while True:
 		print(f"Hello '{name}'!")
 		uPass = getpass.getpass("Please enter a password: ")
-		if is_string_blank(uPass):
+		if is_string_blank(uPass) and not " " in uPass:
 			return uPass
 		else:
 			print("Invalid password. Please try again.")
@@ -95,19 +102,23 @@ def menu_signed_in(user):
 
 def change_password(user):
 	new_pass = getpass.getpass("Please enter a new password: ")
-	with open(r"plain_text.csv", "r") as file:
-		lines = file.readlines()
-	for i in range(len(lines)):
-		line = lines[i].rstrip()
-		if "," in line:
-			username, password = line.split(",")
-			if username == user:
-				if i == len(lines) - 1:  # If it is the last line
-					lines[i] = f"{username},{new_pass}"
-				else:
-					lines[i] = f"{username},{new_pass}\n"
-	with open(r"plain_text.csv", "w") as file:
-		file.writelines(lines)
+	if is_string_blank(new_pass) and not " " in new_pass:
+		with open(r"plain_text.csv", "r") as file:
+			lines = file.readlines()
+		for i in range(len(lines)):
+			line = lines[i].rstrip()
+			if "," in line:
+				username, password = line.split(",")
+				if username == user:
+					if i == len(lines) - 1:  # If it is the last line
+						lines[i] = f"{username},{new_pass}"
+					else:
+						lines[i] = f"{username},{new_pass}\n"
+		with open(r"plain_text.csv", "w") as file:
+			file.writelines(lines)
+	else:
+		print("Invalid password. Please try again.")
+		change_password(user)
 
 
 def menu_not_signed_in(i):
